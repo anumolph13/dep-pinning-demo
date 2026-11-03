@@ -1,0 +1,4 @@
+# Runtime dependencies: what the app needs in production.
+# Edit this file, then regenerate requirements.txt (see README).
+boto3>=1.35,<2
+python-dotenv>=1.0,<2
