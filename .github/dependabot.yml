@@ -1,0 +1,21 @@
+version: 2
+updates:
+  # Proposes lock-file bumps (including transitive packages) as reviewable PRs.
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 7        # don't adopt a release until it's been public for a week
+    groups:
+      aws:
+        patterns: ["boto3", "botocore", "s3transfer"]
+      dev-tools:
+        patterns: ["pytest*", "black", "moto", "pip-audit", "pipdeptree"]
+    open-pull-requests-limit: 10
+
+  # Keeps the GitHub Actions used in CI up to date (and can maintain SHA pins).
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
